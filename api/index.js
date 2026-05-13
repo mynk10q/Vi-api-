@@ -13,6 +13,7 @@ module.exports = async (req, res) => {
             });
         }
 
+        // ❌ Blocked Number
         if (number === BLOCKED_NUMBER) {
             return res.status(403).json({
                 status: false,
@@ -20,8 +21,9 @@ module.exports = async (req, res) => {
             });
         }
 
+        // ✅ New Backend API
         const response = await axios.get(
-            `http://144.24.153.5:5000/lookup?number=${number}`
+            `http://144.24.153.5:8709/lookup?number=${number}`
         );
 
         return res.status(200).json(response.data);
